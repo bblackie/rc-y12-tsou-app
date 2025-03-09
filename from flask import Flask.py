@@ -1,4 +1,4 @@
-from flask import Flask,g  
+from flask import Flask,g,render_template
 import sqlite3 
 
 app = Flask(__name__)
@@ -19,12 +19,17 @@ def close_connection(exception):
 
 
 @app.route("/")
+def home():
+    return render_template("home.html")
+
+
+@app.route("/contents")
 def index():
     cursor = get_db().cursor()
-    sql = "SELECT * FROM Car_stock"
+    sql = "SELECT * FROM car_stock"
     cursor.execute(sql)
     results = cursor.fetchall() 
-    return results 
+    return str(results)                                                                           
 
 if __name__ == "__main__":
     app.run(debug=True)
