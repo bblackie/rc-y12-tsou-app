@@ -29,8 +29,9 @@ def index():
     sql = "SELECT * FROM car_stock"
     cursor.execute(sql)
     results = cursor.fetchall() 
-    return str(results)                                                                           
-
+    return render_template("Contents.html", results=results) 
+                                                                          
+ 
 if __name__ == "__main__":
     app.run(debug=True)
 
