@@ -22,16 +22,30 @@ def close_connection(exception):
 def home():
     return render_template("home.html")
 
-
 @app.route("/contents")
-def index():
-    cursor = get_db().cursor()
-    sql = "SELECT * FROM car_stock"
+def contents():
+    db = get_db()
+    cursor = db.cursor()
+    sql = """
+        SELECT 
+            Car_stock.stock_id,
+            Car_manufacturer.manufacturer_name,
+            Car_model.model_name,
+            Car_stock.year,
+            Car_bodystyle.bodystyle_name,
+            Car_stock.car_price,
+            Car_stock.distance
+        FROM Car_stock
+        JOIN Car_model ON Car_stock.model_id = Car_model.model_id
+        JOIN Car_manufacturer ON Car_stock.manufacturer_id = Car_manufacturer.manufacturer_id
+        JOIN Car_bodystyle ON Car_stock.bodystyle_id = Car_bodystyle.bodystyle_id
+    """
     cursor.execute(sql)
-    results = cursor.fetchall() 
-    return render_template("Contents.html", results=results) 
+    results = cursor.fetchall()
+    db.close()
+    return render_template("contents.html", results=results)
                                                                           
- 
+
 if __name__ == "__main__":
     app.run(debug=True)
 
