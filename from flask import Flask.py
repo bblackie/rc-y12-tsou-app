@@ -22,6 +22,11 @@ def close_connection(exception):
 def home():
     return render_template("home.html")
 
+@app.route("/test")
+def home():
+    return render_template("test.html")
+
+
 
 @app.route("/contents")
 def contents():
