@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Contents</title>
+    <title>Car Inventory</title>
     <style>
         table {
             width: 100%;
@@ -25,11 +24,12 @@
         <a href="/">Home</a>
         <a href="http://127.0.0.1:5000/contents">Our Stock</a>
     </div>
-    <h1>Car Inventory</h1>
     
+    <h1>Car Inventory</h1>
     <table>
         <thead>
             <tr>
+                <th>Search</th>
                 <th>Stock ID</th>
                 <th>Manufacturer</th>
                 <th>Model</th>
@@ -42,13 +42,16 @@
         <tbody>
             {% for item in results %}
             <tr>
-                <td>{{ item[0] }}</td> <!-- Stock ID -->
-                <td>{{ item[1] }}</td> <!-- Manufacturer Name -->
-                <td>{{ item[2] }}</td> <!-- Model Name -->
-                <td>{{ item[3] }}</td> <!-- Year -->
-                <td>{{ item[4] }}</td> <!-- Body Style -->
-                <td>{{ item[5] }}</td> <!-- Car Price -->
-                <td>{{ item[6] }}</td> <!-- Distance -->
+                <td>
+                    <input type="text" placeholder="Search..." class="search-bar"> 
+                </td>
+                <td>{{ item[0] }}</td> <!-- stock ID -->
+                <td>{{ item[1] }}</td> <!-- manufacturer name -->
+                <td>{{ item[2] }}</td> <!-- model name -->
+                <td>{{ item[3] }}</td> <!-- year -->
+                <td>{{ item[4] }}</td> <!-- body style -->
+                <td>{{ item[5] }}</td> <!-- car price -->
+                <td>{{ item[6] }}</td> <!-- distance -->
             </tr>
             {% endfor %}
         </tbody>
