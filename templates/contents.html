@@ -24,26 +24,30 @@
     <h1>Car Inventory</h1>
     
     <table>
-        <tr>
-            <th>Stock ID</th>
-            <th>Manufacturer</th>
-            <th>Model</th>
-            <th>Year</th>
-            <th>Body Style</th>
-            <th>Price</th>
-            <th>Distance</th>
-        </tr>
-        {% for item in results %}
-        <tr>
-            <td>{{ item[0] }}</td> <!-- Stock ID -->
-            <td>{{ item[1] }}</td> <!-- Manufacturer Name -->
-            <td>{{ item[2] }}</td> <!-- Model Name -->
-            <td>{{ item[3] }}</td> <!-- Year -->
-            <td>{{ item[4] }}</td> <!-- Body Style -->
-            <td>{{ item[5] }}</td> <!-- Car Price -->
-            <td>{{ item[6] }}</td> <!-- Distance -->
-        </tr>
-        {% endfor %}
+        <thead>
+            <tr>
+                <th>Stock ID</th>
+                <th>Manufacturer</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Body Style</th>
+                <th>Price</th>
+                <th>Distance</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in results %}
+            <tr>
+                <td>{{ item[0] }}</td> <!-- Stock ID -->
+                <td>{{ item[1] }}</td> <!-- Manufacturer Name -->
+                <td>{{ item[2] }}</td> <!-- Model Name -->
+                <td>{{ item[3] }}</td> <!-- Year -->
+                <td>{{ item[4] }}</td> <!-- Body Style -->
+                <td>{{ item[5] }}</td> <!-- Car Price -->
+                <td>{{ item[6] }}</td> <!-- Distance -->
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 </body>
 </html>
