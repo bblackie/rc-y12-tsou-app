@@ -47,25 +47,25 @@ def contents():
             JOIN Car_bodystyle ON Car_stock.bodystyle_id = Car_bodystyle.bodystyle_id
             WHERE Car_model.model_name LIKE ? OR Car_manufacturer.manufacturer_name LIKE ?
             """
-            cursor.execute(sql, (f'%{query}%', f'%{query}%'))
-        else:
-            sql = """
-            SELECT
-                Car_stock.stock_id,
-                Car_manufacturer.manufacturer_name,
-                Car_model.model_name,
-                Car_stock.year,
-                Car_bodystyle.bodystyle_name,
-                Car_stock.car_price,
-                Car_stock.distance,
-                Car_stock.car_image
-            FROM Car_stock
-            JOIN Car_model ON Car_stock.model_id = Car_model.model_id
-            JOIN Car_manufacturer ON Car_stock.manufacturer_id = Car_manufacturer.manufacturer_id
-            JOIN Car_bodystyle ON Car_stock.bodystyle_id = Car_bodystyle.bodystyle_id
-            """
-            cursor.execute(sql)
-            
+            cursor.execute(sql, (f'%{query}%', f'%{query}%'))   
+    else:
+        sql = """
+        SELECT
+            Car_stock.stock_id,
+            Car_manufacturer.manufacturer_name,
+            Car_model.model_name,
+            Car_stock.year,
+            Car_bodystyle.bodystyle_name,
+            Car_stock.car_price,
+            Car_stock.distance,
+            Car_stock.car_image
+        FROM Car_stock
+        JOIN Car_model ON Car_stock.model_id = Car_model.model_id
+        JOIN Car_manufacturer ON Car_stock.manufacturer_id = Car_manufacturer.manufacturer_id
+        JOIN Car_bodystyle ON Car_stock.bodystyle_id = Car_bodystyle.bodystyle_id
+        """
+        cursor.execute(sql)
+    cursor.execute(sql)
     results = cursor.fetchall()
     db.close()
     return render_template("contents.html", results=results)
