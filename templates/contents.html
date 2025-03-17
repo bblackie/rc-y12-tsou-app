@@ -41,6 +41,7 @@
         <tbody>
             {% for item in results %}
             <tr>
+                <td><img src="{{ item[7] }}" alt="Car Image" style="width:200px;height:auto;"></td>
                 <td>{{ item[0] }}</td> <!-- stock ID -->
                 <td>{{ item[1] }}</td> <!-- manufacturer name -->
                 <td>{{ item[2] }}</td> <!-- model name -->
@@ -48,7 +49,6 @@
                 <td>{{ item[4] }}</td> <!-- body style -->
                 <td>{{ item[5] }}</td> <!-- car price -->
                 <td>{{ item[6] }}</td> <!-- distance -->
-                <td><img src="{{ item[7] }}" alt="Car Image" style="width:200px;height:auto;"></td>
             </tr>
             {% endfor %}
         </tbody>
