@@ -29,26 +29,27 @@
     <table>
         <thead>
             <tr>
-                <th>Stock ID</th>
+                <th>Images</th>
                 <th>Manufacturer</th>
                 <th>Model</th>
                 <th>Year</th>
                 <th>Body Style</th>
                 <th>Price</th>
                 <th>Distance</th>
+                <th>Stock ID</th>
             </tr>
         </thead>
         <tbody>
             {% for item in results %}
             <tr>
                 <td><img src="{{ item[7] }}" alt="Car Image" style="width:200px;height:auto;"></td>
-                <td>{{ item[0] }}</td> <!-- stock ID -->
                 <td>{{ item[1] }}</td> <!-- manufacturer name -->
                 <td>{{ item[2] }}</td> <!-- model name -->
                 <td>{{ item[3] }}</td> <!-- year -->
                 <td>{{ item[4] }}</td> <!-- body style -->
                 <td>{{ item[5] }}</td> <!-- car price -->
                 <td>{{ item[6] }}</td> <!-- distance -->
+                <td>{{ item[0] }}</td> <!-- stock ID -->
             </tr>
             {% endfor %}
         </tbody>
