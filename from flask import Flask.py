@@ -44,7 +44,6 @@ def contents():
         JOIN Car_model ON Car_stock.model_id = Car_model.model_id
         JOIN Car_manufacturer ON Car_stock.manufacturer_id = Car_manufacturer.manufacturer_id
         JOIN Car_bodystyle ON Car_stock.bodystyle_id = Car_bodystyle.bodystyle_id
-        JOIN car_images ON Car_model.model_name = car_images.image_car
         WHERE Car_model.model_name LIKE ? OR Car_manufacturer.manufacturer_name LIKE ?
         """
         cursor.execute(sql, (f'%{query}%', f'%{query}%'))
@@ -58,11 +57,12 @@ def contents():
             Car_bodystyle.bodystyle_name,
             Car_stock.car_price,
             Car_stock.distance,
-            Car_stock.car_image
+            car_images.image
         FROM Car_stock
         JOIN Car_model ON Car_stock.model_id = Car_model.model_id
         JOIN Car_manufacturer ON Car_stock.manufacturer_id = Car_manufacturer.manufacturer_id
         JOIN Car_bodystyle ON Car_stock.bodystyle_id = Car_bodystyle.bodystyle_id
+        JOIN car_images ON Car_model.model_name = car_images.image_car
         """
         cursor.execute(sql)
 
