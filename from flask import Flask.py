@@ -28,7 +28,7 @@ def contents():
     db = get_db()
     cursor = db.cursor()
     query = request.args.get('query')
-    
+
     if query:
         sql = f"""
         SELECT
@@ -62,6 +62,7 @@ def contents():
         JOIN Car_model ON Car_stock.model_id = Car_model.model_id
         JOIN Car_manufacturer ON Car_stock.manufacturer_id = Car_manufacturer.manufacturer_id
         JOIN Car_bodystyle ON Car_stock.bodystyle_id = Car_bodystyle.bodystyle_id
+        LEFT JOIN car_images ON Car_stock.image_id = car_images.image_id
         """
         cursor.execute(sql)
 
